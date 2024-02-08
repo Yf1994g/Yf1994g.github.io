@@ -49,6 +49,9 @@ aside {
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    position: fixed; /* 或 position: absolute; */
+    top: 0;
+    left: 0;
 }
 
 aside h3 {
