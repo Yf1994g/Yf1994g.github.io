@@ -1,16 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
-  <meta charset="utf-8">
-  <title>{{ page.title }}</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: "我的Jekyll网站" }}</title>
+  <link rel="stylesheet" href="/css/style.css"> <!-- 假设你有一个CSS文件来美化网站 -->
 </head>
 <body>
   <!-- 头部 -->
   <header>
-    <h1>我的网站</h1>
+    <h1>{{ site.title | default: "我的网站" }}</h1>
     <nav>
-      <a href="/">首页</a>
-      <a href="/about">关于</a>
+      <ul>
+        <li><a href="/">首页</a></li>
+        <li><a href="/about">关于</a></li>
+        <li><a href="/blog">博客</a></li> <!-- 添加一个博客链接 -->
+        <li><a href="/contact">联系方式</a></li> <!-- 添加一个联系方式链接 -->
+      </ul>
     </nav>
   </header>
 
@@ -22,13 +28,22 @@
   <!-- 侧边栏 -->
   <aside>
     <h3>侧边栏</h3>
-    <!-- 添加侧边栏内容 -->
+    <!-- 添加一些侧边栏内容，比如最新文章列表 -->
+    <h4>最新文章</h4>
+    <ul>
+      {% for post in site.posts limit:5 %}
+      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+      {% endfor %}
+    </ul>
   </aside>
 
   <!-- 底部 -->
   <footer>
-    版权信息
+    <p>版权所有 &copy; {{ site.time | date: '%Y' }} {{ site.author.name }}</p>
+    <p><a href="/privacy">隐私政策</a></p> <!-- 假设你有一个隐私政策页面 -->
   </footer>
+
+  <script src="/js/main.js"></script> <!-- 假设你有一些JavaScript来增强网站的功能 -->
 </body>
 </html>
 
